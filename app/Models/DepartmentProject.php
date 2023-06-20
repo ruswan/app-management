@@ -19,11 +19,22 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @property Carbon $created_at
  * @property Carbon $updated_at
  * @property string $deleted_at
- *
  * @property Department $department
  * @property Project $project
- *
  * @package App\Models
+ * @method static \Illuminate\Database\Eloquent\Builder|DepartmentProject newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|DepartmentProject newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|DepartmentProject onlyTrashed()
+ * @method static \Illuminate\Database\Eloquent\Builder|DepartmentProject query()
+ * @method static \Illuminate\Database\Eloquent\Builder|DepartmentProject whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|DepartmentProject whereDeletedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|DepartmentProject whereDepartmentId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|DepartmentProject whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|DepartmentProject whereProjectId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|DepartmentProject whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|DepartmentProject withTrashed()
+ * @method static \Illuminate\Database\Eloquent\Builder|DepartmentProject withoutTrashed()
+ * @mixin \Eloquent
  */
 class DepartmentProject extends Model
 {

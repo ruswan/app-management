@@ -19,11 +19,22 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
  * @property string|null $deleted_at
- *
  * @property Project $project
  * @property User $user
- *
  * @package App\Models
+ * @method static \Illuminate\Database\Eloquent\Builder|ProjectTeam newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|ProjectTeam newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|ProjectTeam onlyTrashed()
+ * @method static \Illuminate\Database\Eloquent\Builder|ProjectTeam query()
+ * @method static \Illuminate\Database\Eloquent\Builder|ProjectTeam whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|ProjectTeam whereDeletedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|ProjectTeam whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|ProjectTeam whereProjectId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|ProjectTeam whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|ProjectTeam whereUserId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|ProjectTeam withTrashed()
+ * @method static \Illuminate\Database\Eloquent\Builder|ProjectTeam withoutTrashed()
+ * @mixin \Eloquent
  */
 class ProjectTeam extends Model
 {
