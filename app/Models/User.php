@@ -7,8 +7,11 @@
 namespace App\Models;
 
 use Carbon\Carbon;
-use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
+use Filament\Models\Contracts\FilamentUser;
+use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 
 /**
  * Class User
@@ -39,7 +42,7 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|User whereUpdatedAt($value)
  * @mixin \Eloquent
  */
-class User extends Model
+class User extends Authenticatable implements FilamentUser, MustVerifyEmail
 {
     protected $table = 'users';
 
@@ -68,5 +71,13 @@ class User extends Model
     public function projects()
     {
         return $this->hasMany(Project::class, 'responsible_id');
+    }
+
+    /**
+     * Batasi hanya user yang statusnya aktif yang bisa mengakses
+     */
+    public function canAccessFilament(): bool
+    {
+        return true;
     }
 }
