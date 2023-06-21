@@ -7,12 +7,15 @@
 namespace App\Models;
 
 use Carbon\Carbon;
+use Spatie\Permission\Traits\HasRoles;
 use Illuminate\Database\Eloquent\Model;
 use Filament\Models\Contracts\FilamentUser;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Althinect\FilamentSpatieRolesPermissions\Concerns\HasSuperAdmin;
 
 /**
  * Class User
@@ -45,7 +48,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
  */
 class User extends Authenticatable implements FilamentUser, MustVerifyEmail
 {
-    use SoftDeletes;
+    use SoftDeletes, HasSuperAdmin, HasRoles, HasFactory;
 
     protected $table = 'users';
 

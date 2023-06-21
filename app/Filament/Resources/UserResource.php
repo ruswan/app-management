@@ -6,6 +6,7 @@ use App\Filament\Resources\UserResource\Pages;
 use App\Filament\Resources\UserResource\RelationManagers;
 use App\Filament\Resources\UserResource\RelationManagers\ProjectsRelationManager;
 use App\Filament\Resources\UserResource\RelationManagers\ProjectUsersRelationManager;
+use App\Filament\Resources\UserResource\RelationManagers\RolesRelationManager;
 use App\Models\User;
 use Filament\Forms;
 use Filament\Resources\Form;
@@ -48,6 +49,7 @@ class UserResource extends Resource
                     ->searchable(),
                 Tables\Columns\TextColumn::make('email')
                     ->searchable(),
+                Tables\Columns\TagsColumn::make('roles.name'),
                 Tables\Columns\TextColumn::make('projects_count')
                     ->counts('projects')
                     ->sortable(),
@@ -80,6 +82,7 @@ class UserResource extends Resource
         return [
             ProjectsRelationManager::class,
             ProjectUsersRelationManager::class,
+            RolesRelationManager::class,
         ];
     }
 
