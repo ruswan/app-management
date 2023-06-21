@@ -10,6 +10,7 @@ use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 use Filament\Models\Contracts\FilamentUser;
 use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
@@ -44,6 +45,8 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
  */
 class User extends Authenticatable implements FilamentUser, MustVerifyEmail
 {
+    use SoftDeletes;
+
     protected $table = 'users';
 
     protected $casts = [
@@ -64,13 +67,15 @@ class User extends Authenticatable implements FilamentUser, MustVerifyEmail
     ];
 
     /**
-     * Get all of the projectTeams for the User
+     * Get all of the projectUsers for the User
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function projectTeams()
+    public function projectUsers()
     {
-        return $this->hasMany(ProjectTeam::class);
+        return $this->belongsToMany(Project::class)
+            ->withPivot('id', 'deleted_at')
+            ->withTimestamps();
     }
 
     /**
