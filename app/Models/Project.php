@@ -115,4 +115,14 @@ class Project extends Model
     {
         return $this->hasMany(Module::class);
     }
+
+    /**
+     * Get the productionYear that owns the Project
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function productionYear()
+    {
+        return $this->belongsTo(ProductionYear::class);
+    }
 }
