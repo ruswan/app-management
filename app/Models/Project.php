@@ -55,6 +55,7 @@ class Project extends Model
     protected $fillable = [
         'responsible_id',
         'name',
+        'description',
         'production_year'
     ];
 
