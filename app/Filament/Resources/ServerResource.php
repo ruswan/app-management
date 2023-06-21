@@ -4,6 +4,7 @@ namespace App\Filament\Resources;
 
 use App\Filament\Resources\ServerResource\Pages;
 use App\Filament\Resources\ServerResource\RelationManagers;
+use App\Filament\Resources\ServerResource\RelationManagers\ProjectsRelationManager;
 use App\Models\Server;
 use Filament\Forms;
 use Filament\Forms\Components\Card;
@@ -51,6 +52,8 @@ class ServerResource extends Resource
                 Tables\Columns\IconColumn::make('is_internal')
                     ->boolean()
                     ->sortable(),
+                Tables\Columns\TextColumn::make('projects_count')
+                    ->counts('projects'),
             ])
             ->filters([
                 Tables\Filters\TrashedFilter::make(),
@@ -69,7 +72,7 @@ class ServerResource extends Resource
     public static function getRelations(): array
     {
         return [
-            //
+            ProjectsRelationManager::class,
         ];
     }
 

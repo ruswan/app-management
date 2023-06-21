@@ -93,4 +93,16 @@ class Project extends Model
             ->withPivot('id', 'deleted_at')
             ->withTimestamps();
     }
+
+    /**
+     * The servers that belong to the Project
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function servers()
+    {
+        return $this->belongsToMany(Server::class)
+            ->withPivot('id', 'deleted_at')
+            ->withTimestamps();
+    }
 }
