@@ -4,6 +4,7 @@ namespace App\Filament\Resources;
 
 use App\Filament\Resources\ProductionYearResource\Pages;
 use App\Filament\Resources\ProductionYearResource\RelationManagers;
+use App\Filament\Resources\ProductionYearResource\RelationManagers\ProjectsRelationManager;
 use App\Models\ProductionYear;
 use Filament\Forms;
 use Filament\Forms\Components\Card;
@@ -64,7 +65,7 @@ class ProductionYearResource extends Resource
     public static function getRelations(): array
     {
         return [
-            //
+            ProjectsRelationManager::class,
         ];
     }
 
