@@ -58,6 +58,11 @@ class ServerResource extends Resource
             ])
             ->filters([
                 Tables\Filters\TrashedFilter::make(),
+                Tables\Filters\SelectFilter::make('is_internal')
+                    ->options([
+                        true => 'Yes',
+                        false => 'No',
+                    ]),
             ])
             ->actions([
                 Tables\Actions\ViewAction::make(),
