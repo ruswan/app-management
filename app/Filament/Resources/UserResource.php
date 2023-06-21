@@ -46,6 +46,11 @@ class UserResource extends Resource
             ->columns([
                 Tables\Columns\TextColumn::make('name'),
                 Tables\Columns\TextColumn::make('email'),
+                Tables\Columns\TextColumn::make('projects_count')
+                    ->counts('projects'),
+                Tables\Columns\TextColumn::make('project_users_count')
+                    ->counts('projectUsers')
+                    ->label('Teams count'),
             ])
             ->filters([
                 Tables\Filters\TrashedFilter::make(),
