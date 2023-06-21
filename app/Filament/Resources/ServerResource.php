@@ -69,6 +69,11 @@ class ServerResource extends Resource
             ]);
     }
 
+    /**
+     * Mendapatkan daftar kelas pengelola relasi yang terkait dengan objek saat ini.
+     *
+     * @return array<class-string> Array yang berisi daftar kelas Relation Manager yang terkait.
+     */
     public static function getRelations(): array
     {
         return [
@@ -76,6 +81,11 @@ class ServerResource extends Resource
         ];
     }
 
+    /**
+     * Mengembalikan array yang berisi daftar halaman (pages) yang terkait.
+     *
+     * @return array<string, array<mixed>> The array of pages.
+     */
     public static function getPages(): array
     {
         return [
