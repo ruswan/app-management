@@ -5,6 +5,7 @@ namespace App\Filament\Resources;
 use App\Filament\Resources\ProjectResource\Pages;
 use App\Filament\Resources\ProjectResource\RelationManagers;
 use App\Filament\Resources\ProjectResource\RelationManagers\DepartmentsRelationManager;
+use App\Filament\Resources\ProjectResource\RelationManagers\ModulesRelationManager;
 use App\Filament\Resources\ProjectResource\RelationManagers\ProjectUsersRelationManager;
 use App\Filament\Resources\ProjectResource\RelationManagers\UsersRelationManager;
 use App\Models\Project;
@@ -56,15 +57,22 @@ class ProjectResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('name'),
+                Tables\Columns\TextColumn::make('name')
+                    ->searchable(),
                 Tables\Columns\TextColumn::make('user.name')
                     ->label('PIC'),
-                Tables\Columns\TextColumn::make('production_year'),
+                Tables\Columns\TextColumn::make('production_year')
+                    ->sortable(),
                 Tables\Columns\TextColumn::make('departments_count')
-                    ->counts('departments'),
+                    ->counts('departments')
+                    ->sortable(),
                 Tables\Columns\TextColumn::make('users_count')
                     ->counts('users')
-                    ->label('Teams count'),
+                    ->label('Teams count')
+                    ->sortable(),
+                Tables\Columns\TextColumn::make('modules_count')
+                    ->counts('modules')
+                    ->sortable(),
             ])
             ->filters([
                 Tables\Filters\TrashedFilter::make(),
@@ -89,6 +97,7 @@ class ProjectResource extends Resource
     {
         return [
             DepartmentsRelationManager::class,
+            ModulesRelationManager::class,
             UsersRelationManager::class,
         ];
     }
