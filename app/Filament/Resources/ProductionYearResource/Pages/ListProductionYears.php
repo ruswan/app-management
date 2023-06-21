@@ -10,6 +10,11 @@ class ListProductionYears extends ListRecords
 {
     protected static string $resource = ProductionYearResource::class;
 
+    /**
+     * Mendapatkan daftar objek aksi yang tersedia untuk digunakan.
+     *
+     * @return array<Actions\Action> Daftar objek aksi.
+     */
     protected function getActions(): array
     {
         return [
