@@ -1,14 +1,17 @@
-name: PHP Stan
-
-on: [push]
-
+name: phpstan
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
 jobs:
-  build-test:
+  build:
     runs-on: ubuntu-latest
-
     steps:
-    - uses: actions/checkout@v3
-    - uses: php-actions/composer@v6 # or alternative dependency management
-    - uses: php-actions/phpstan@v3
-      with:
-        path: src/
+      - uses: actions/checkout@v2
+
+      - name: PHPStan
+        uses: chindit/actions-phpstan@master
+        with:
+          # Arguments to add to PHPStan
+          arguments: 'app/ --level=7'
