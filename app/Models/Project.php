@@ -23,7 +23,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @property string|null $deleted_at
  * @property User $user
  * @property Collection|Department[] $departments
- * @property Collection|ProjectTeam[] $project_teams
+ * @property Collection|ProjectTeam[] $users
  * @package App\Models
  * @property-read int|null $departments_count
  * @property-read int|null $project_teams_count
@@ -82,12 +82,14 @@ class Project extends Model
     }
 
     /**
-     * Get all of the projectTeams for the Project
+     * Get all of the users for the Project
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function projectTeams()
+    public function users()
     {
-        return $this->hasMany(ProjectTeam::class);
+        return $this->belongsToMany(User::class)
+            ->withPivot('id', 'deleted_at')
+            ->withTimestamps();
     }
 }
