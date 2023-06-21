@@ -81,10 +81,11 @@ class Project extends Model
             ->withTimestamps();
     }
 
+
     /**
-     * Get all of the users for the Project
+     * The users that belong to the Project
      *
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
      */
     public function users()
     {

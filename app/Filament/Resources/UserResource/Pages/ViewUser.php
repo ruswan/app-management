@@ -10,6 +10,11 @@ class ViewUser extends ViewRecord
 {
     protected static string $resource = UserResource::class;
 
+    /**
+     * Mendapatkan daftar objek aksi yang tersedia untuk digunakan.
+     *
+     * @return array<Actions\Action> Daftar objek aksi.
+     */
     protected function getActions(): array
     {
         return [

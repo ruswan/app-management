@@ -67,9 +67,9 @@ class User extends Authenticatable implements FilamentUser, MustVerifyEmail
     ];
 
     /**
-     * Get all of the projectUsers for the User
+     * The projectUsers that belong to the User
      *
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
      */
     public function projectUsers()
     {
@@ -81,7 +81,7 @@ class User extends Authenticatable implements FilamentUser, MustVerifyEmail
     /**
      * Get all of the projects for the User
      *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
     public function projects()
     {
