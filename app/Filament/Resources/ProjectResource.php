@@ -60,6 +60,11 @@ class ProjectResource extends Resource
                 Tables\Columns\TextColumn::make('user.name')
                     ->label('PIC'),
                 Tables\Columns\TextColumn::make('production_year'),
+                Tables\Columns\TextColumn::make('departments_count')
+                    ->counts('departments'),
+                Tables\Columns\TextColumn::make('users_count')
+                    ->counts('users')
+                    ->label('Teams count'),
             ])
             ->filters([
                 Tables\Filters\TrashedFilter::make(),
