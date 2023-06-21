@@ -105,4 +105,14 @@ class Project extends Model
             ->withPivot('id', 'deleted_at')
             ->withTimestamps();
     }
+
+    /**
+     * Get all of the modules for the Project
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function modules()
+    {
+        return $this->hasMany(Module::class);
+    }
 }
