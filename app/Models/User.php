@@ -25,10 +25,10 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
  * @property Collection|ProjectTeam[] $project_teams
- * @property Collection|Project[] $projects
+ * @property Collection|Project[] $responsibleProjects
  * @package App\Models
  * @property-read int|null $project_teams_count
- * @property-read int|null $projects_count
+ * @property-read int|null $responsibleProjects_count
  * @method static \Illuminate\Database\Eloquent\Builder|User newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|User newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|User query()
@@ -74,13 +74,25 @@ class User extends Authenticatable implements FilamentUser, MustVerifyEmail
     }
 
     /**
-     * Get all of the projects for the User
+     * Get all of the responsibleProjects for the User
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function projects()
+    public function responsibleProjects()
     {
         return $this->hasMany(Project::class, 'responsible_id');
+    }
+
+    /**
+     * The projects that belong to the Department
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function projects()
+    {
+        return $this->belongsToMany(Project::class)
+            ->withPivot('id', 'deleted_at')
+            ->withTimestamps();
     }
 
     /**

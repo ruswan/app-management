@@ -5,6 +5,8 @@ namespace App\Filament\Resources;
 use App\Filament\Resources\ProjectResource\Pages;
 use App\Filament\Resources\ProjectResource\RelationManagers;
 use App\Filament\Resources\ProjectResource\RelationManagers\DepartmentsRelationManager;
+use App\Filament\Resources\ProjectResource\RelationManagers\ProjectUsersRelationManager;
+use App\Filament\Resources\ProjectResource\RelationManagers\UsersRelationManager;
 use App\Models\Project;
 use App\Models\User;
 use Filament\Forms;
@@ -77,6 +79,7 @@ class ProjectResource extends Resource
     {
         return [
             DepartmentsRelationManager::class,
+            UsersRelationManager::class,
         ];
     }
 
