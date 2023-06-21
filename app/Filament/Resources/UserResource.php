@@ -44,13 +44,17 @@ class UserResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('name'),
-                Tables\Columns\TextColumn::make('email'),
+                Tables\Columns\TextColumn::make('name')
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('email')
+                    ->searchable(),
                 Tables\Columns\TextColumn::make('projects_count')
-                    ->counts('projects'),
+                    ->counts('projects')
+                    ->sortable(),
                 Tables\Columns\TextColumn::make('project_users_count')
                     ->counts('projectUsers')
-                    ->label('Teams count'),
+                    ->label('Teams count')
+                    ->sortable(),
             ])
             ->filters([
                 Tables\Filters\TrashedFilter::make(),

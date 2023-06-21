@@ -76,6 +76,9 @@ class ProjectResource extends Resource
             ])
             ->filters([
                 Tables\Filters\TrashedFilter::make(),
+                Tables\Filters\SelectFilter::make('responsible_id')
+                    ->relationship('user', 'name')
+                    ->label('PIC'),
             ])
             ->actions([
                 Tables\Actions\ViewAction::make(),
