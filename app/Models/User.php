@@ -13,6 +13,7 @@ use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Althinect\FilamentSpatieRolesPermissions\Concerns\HasSuperAdmin;
 
 /**
  * Class User
@@ -45,7 +46,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
  */
 class User extends Authenticatable implements FilamentUser, MustVerifyEmail
 {
-    use SoftDeletes;
+    use SoftDeletes, HasSuperAdmin;
 
     protected $table = 'users';
 
