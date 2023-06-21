@@ -53,7 +53,8 @@ class ServerResource extends Resource
                     ->boolean()
                     ->sortable(),
                 Tables\Columns\TextColumn::make('projects_count')
-                    ->counts('projects'),
+                    ->counts('projects')
+                    ->sortable(),
             ])
             ->filters([
                 Tables\Filters\TrashedFilter::make(),
