@@ -39,6 +39,8 @@ class ProductionYearResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('year'),
+                Tables\Columns\TextColumn::make('projects_count')
+                    ->counts('projects'),
             ])
             ->filters([
                 Tables\Filters\TrashedFilter::make(),
