@@ -8,6 +8,7 @@ use App\Filament\Resources\ProjectResource\RelationManagers\DepartmentsRelationM
 use App\Filament\Resources\ProjectResource\RelationManagers\ModulesRelationManager;
 use App\Filament\Resources\ProjectResource\RelationManagers\ProjectUsersRelationManager;
 use App\Filament\Resources\ProjectResource\RelationManagers\UsersRelationManager;
+use App\Models\ProductionYear;
 use App\Models\Project;
 use App\Models\User;
 use Filament\Forms;
@@ -46,7 +47,10 @@ class ProjectResource extends Resource
                             ->searchable()
                             ->label('PIC')
                             ->required(),
-                        Forms\Components\TextInput::make('production_year')
+                        Forms\Components\Select::make('production_year_id')
+                            ->options(ProductionYear::all()->pluck('year', 'id'))
+                            ->searchable()
+                            ->label('Production Year')
                             ->required(),
                     ])->columnSpan(1),
             ])
@@ -61,7 +65,7 @@ class ProjectResource extends Resource
                     ->searchable(),
                 Tables\Columns\TextColumn::make('user.name')
                     ->label('PIC'),
-                Tables\Columns\TextColumn::make('production_year')
+                Tables\Columns\TextColumn::make('productionYear.year')
                     ->sortable(),
                 Tables\Columns\TextColumn::make('departments_count')
                     ->counts('departments')

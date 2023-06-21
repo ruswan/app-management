@@ -49,14 +49,14 @@ class Project extends Model
 
     protected $casts = [
         'responsible_id' => 'int',
-        'production_year' => 'int'
+        'production_year_id' => 'int'
     ];
 
     protected $fillable = [
         'responsible_id',
         'name',
         'description',
-        'production_year'
+        'production_year_id'
     ];
 
     /**
