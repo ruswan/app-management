@@ -44,10 +44,15 @@ class Department extends Model
         'name'
     ];
 
+    /**
+     * The projects that belong to the Department
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
     public function projects()
     {
         return $this->belongsToMany(Project::class)
-                    ->withPivot('id', 'deleted_at')
-                    ->withTimestamps();
+            ->withPivot('id', 'deleted_at')
+            ->withTimestamps();
     }
 }

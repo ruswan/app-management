@@ -51,11 +51,21 @@ class DepartmentProject extends Model
         'project_id'
     ];
 
+    /**
+     * Get the department that owns the DepartmentProject
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
     public function department()
     {
         return $this->belongsTo(Department::class);
     }
 
+    /**
+     * Get the project that owns the DepartmentProject
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
     public function project()
     {
         return $this->belongsTo(Project::class);

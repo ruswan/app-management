@@ -58,19 +58,34 @@ class Project extends Model
         'production_year'
     ];
 
+    /**
+     * Get the user that owns the Project
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
     public function user()
     {
         return $this->belongsTo(User::class, 'responsible_id');
     }
 
+    /**
+     * The departments that belong to the Project
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
     public function departments()
     {
         return $this->belongsToMany(Department::class)
-                    ->withPivot('id', 'deleted_at')
-                    ->withTimestamps();
+            ->withPivot('id', 'deleted_at')
+            ->withTimestamps();
     }
 
-    public function project_teams()
+    /**
+     * Get all of the projectTeams for the Project
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function projectTeams()
     {
         return $this->hasMany(ProjectTeam::class);
     }

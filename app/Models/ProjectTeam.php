@@ -51,11 +51,22 @@ class ProjectTeam extends Model
         'user_id'
     ];
 
+    /**
+     * Get the project that owns the ProjectTeam
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
     public function project()
     {
         return $this->belongsTo(Project::class);
     }
 
+
+    /**
+     * Get the user that owns the ProjectTeam
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
     public function user()
     {
         return $this->belongsTo(User::class);

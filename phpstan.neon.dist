@@ -11,8 +11,5 @@ parameters:
 
 #    ignoreErrors:
 #        - '#PHPDoc tag @var#'
-#
-#    excludePaths:
-#        - ./*/*/FileToBeExcluded.php
-#
-#    checkMissingIterableValueType: false
+
+    checkGenericClassInNonGenericObjectType: false

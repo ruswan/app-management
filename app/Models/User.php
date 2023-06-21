@@ -63,11 +63,21 @@ class User extends Authenticatable implements FilamentUser, MustVerifyEmail
         'remember_token'
     ];
 
-    public function project_teams()
+    /**
+     * Get all of the projectTeams for the User
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function projectTeams()
     {
         return $this->hasMany(ProjectTeam::class);
     }
 
+    /**
+     * Get all of the projects for the User
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
     public function projects()
     {
         return $this->hasMany(Project::class, 'responsible_id');
@@ -75,6 +85,7 @@ class User extends Authenticatable implements FilamentUser, MustVerifyEmail
 
     /**
      * Batasi hanya user yang statusnya aktif yang bisa mengakses
+     * @return bool
      */
     public function canAccessFilament(): bool
     {
