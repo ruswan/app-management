@@ -67,13 +67,15 @@ class User extends Authenticatable implements FilamentUser, MustVerifyEmail
     ];
 
     /**
-     * Get all of the projectTeams for the User
+     * Get all of the projectUsers for the User
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function projectTeams()
+    public function projectUsers()
     {
-        return $this->hasMany(ProjectTeam::class);
+        return $this->belongsToMany(Project::class)
+            ->withPivot('id', 'deleted_at')
+            ->withTimestamps();
     }
 
     /**

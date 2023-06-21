@@ -5,6 +5,7 @@ namespace App\Filament\Resources;
 use App\Filament\Resources\UserResource\Pages;
 use App\Filament\Resources\UserResource\RelationManagers;
 use App\Filament\Resources\UserResource\RelationManagers\ProjectsRelationManager;
+use App\Filament\Resources\UserResource\RelationManagers\ProjectUsersRelationManager;
 use App\Models\User;
 use Filament\Forms;
 use Filament\Resources\Form;
@@ -64,6 +65,7 @@ class UserResource extends Resource
     {
         return [
             ProjectsRelationManager::class,
+            ProjectUsersRelationManager::class,
         ];
     }
 
