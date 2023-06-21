@@ -49,14 +49,14 @@ class Project extends Model
 
     protected $casts = [
         'responsible_id' => 'int',
-        'production_year' => 'int'
+        'production_year_id' => 'int'
     ];
 
     protected $fillable = [
         'responsible_id',
         'name',
         'description',
-        'production_year'
+        'production_year_id'
     ];
 
     /**
@@ -114,5 +114,15 @@ class Project extends Model
     public function modules()
     {
         return $this->hasMany(Module::class);
+    }
+
+    /**
+     * Get the productionYear that owns the Project
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function productionYear()
+    {
+        return $this->belongsTo(ProductionYear::class);
     }
 }
