@@ -32,9 +32,6 @@ class ModulesRelationManager extends RelationManager
             ->columns([
                 Tables\Columns\TextColumn::make('name'),
             ])
-            ->filters([
-                //
-            ])
             ->headerActions([
                 Tables\Actions\CreateAction::make(),
             ])
@@ -45,5 +42,5 @@ class ModulesRelationManager extends RelationManager
             ->bulkActions([
                 Tables\Actions\DeleteBulkAction::make(),
             ]);
-    }    
+    }
 }
