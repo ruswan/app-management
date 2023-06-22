@@ -84,7 +84,6 @@ class UserResource extends Resource
         return [
             ProjectsRelationManager::class,
             ProjectUsersRelationManager::class,
-            RolesRelationManager::class,
         ];
     }
 
