@@ -21,7 +21,7 @@ class ProjectUserPolicy
      */
     public function view(User $user, ProjectUser $projectUser): bool
     {
-        return true
+        return true;
     }
 
     /**

@@ -101,6 +101,9 @@ class User extends Authenticatable implements FilamentUser, MustVerifyEmail
         return true;
     }
 
+    /**
+     * @return bool
+     */
     public function isAdmin()
     {
         return auth()->user()->is_admin == 1;
