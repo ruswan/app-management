@@ -13,6 +13,7 @@ use App\Filament\Resources\UserResource\Pages;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use STS\FilamentImpersonate\Tables\Actions\Impersonate;
 use App\Filament\Resources\UserResource\RelationManagers;
+use App\Filament\Resources\UserResource\RelationManagers\RolesRelationManager;
 use App\Filament\Resources\UserResource\RelationManagers\ProjectsRelationManager;
 use App\Filament\Resources\UserResource\RelationManagers\ProjectUsersRelationManager;
 
@@ -49,6 +50,7 @@ class UserResource extends Resource
                     ->searchable(),
                 Tables\Columns\TextColumn::make('email')
                     ->searchable(),
+                Tables\Columns\TagsColumn::make('roles.name'),
                 Tables\Columns\TextColumn::make('projects_count')
                     ->counts('projects')
                     ->sortable(),
@@ -82,6 +84,7 @@ class UserResource extends Resource
         return [
             ProjectsRelationManager::class,
             ProjectUsersRelationManager::class,
+            RolesRelationManager::class,
         ];
     }
 
