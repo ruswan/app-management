@@ -52,7 +52,8 @@ class User extends Authenticatable implements FilamentUser, MustVerifyEmail
     protected $table = 'users';
 
     protected $casts = [
-        'email_verified_at' => 'datetime'
+        'email_verified_at' => 'datetime',
+        'is_admin'  => 'bool',
     ];
 
     protected $hidden = [
@@ -65,7 +66,8 @@ class User extends Authenticatable implements FilamentUser, MustVerifyEmail
         'email',
         'email_verified_at',
         'password',
-        'remember_token'
+        'remember_token',
+        'is_admin',
     ];
 
     /**
