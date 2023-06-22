@@ -18,7 +18,7 @@ return new class extends Migration
             $table->unsignedBigInteger('department_id')->index('department_id');
             $table->unsignedBigInteger('project_id')->index('project_id');
             $table->timestamps();
-            $table->softDeletes()->nullable(false);
+            $table->softDeletes();
         });
     }
 
