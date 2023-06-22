@@ -14,7 +14,6 @@ use App\Filament\Resources\UserResource\Pages;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use STS\FilamentImpersonate\Tables\Actions\Impersonate;
 use App\Filament\Resources\UserResource\RelationManagers;
-use App\Filament\Resources\UserResource\RelationManagers\RolesRelationManager;
 use App\Filament\Resources\UserResource\RelationManagers\ProjectsRelationManager;
 use App\Filament\Resources\UserResource\RelationManagers\ProjectUsersRelationManager;
 
@@ -54,7 +53,6 @@ class UserResource extends Resource
                     ->searchable(),
                 Tables\Columns\TextColumn::make('email')
                     ->searchable(),
-                Tables\Columns\TagsColumn::make('roles.name'),
                 Tables\Columns\IconColumn::make('is_admin')
                     ->boolean()
                     ->sortable(),

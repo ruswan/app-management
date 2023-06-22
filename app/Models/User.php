@@ -93,11 +93,30 @@ class User extends Authenticatable implements FilamentUser, MustVerifyEmail
     }
 
     /**
-     * Batasi hanya user yang statusnya aktif yang bisa mengakses
+     * Perbolehkan akses
+     *
      * @return bool
      */
     public function canAccessFilament(): bool
     {
         return true;
+    }
+
+    /**
+     * Batasi hanya admin yang bisa melakukan impersonate
+     *
+     * @return bool
+     */
+    public function canImpersonate()
+    {
+        return $this->isAdmin();
+    }
+
+    /**
+     * @return bool
+     */
+    public function isAdmin()
+    {
+        return auth()->user()->is_admin == 1;
     }
 }
