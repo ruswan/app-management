@@ -1,6 +1,6 @@
 # App Management
 
-App Management adalah sebuah alat bantu untuk mempermudah pengelolaan data Project, unit kerja, modul, serta pengguna yang terlibat.
+App Management adalah sebuah alat bantu untuk mempermudah pengelolaan data project, department/unit kerja, modul, serta pengguna yang terlibat.
 
 ## Konsep
 
