@@ -16,16 +16,6 @@ class ProjectsRelationManager extends RelationManager
 
     protected static ?string $recordTitleAttribute = 'name';
 
-    public static function form(Form $form): Form
-    {
-        return $form
-            ->schema([
-                Forms\Components\TextInput::make('name')
-                    ->required()
-                    ->maxLength(255),
-            ]);
-    }
-
     public static function table(Table $table): Table
     {
         return $table
@@ -33,17 +23,14 @@ class ProjectsRelationManager extends RelationManager
                 Tables\Columns\TextColumn::make('name'),
                 Tables\Columns\TextColumn::make('production_year'),
             ])
-            ->filters([
-                //
-            ])
             ->headerActions([
-                //
+                Tables\Actions\AttachAction::make(),
             ])
             ->actions([
-                //
+                Tables\Actions\DetachAction::make(),
             ])
             ->bulkActions([
-                //
+                Tables\Actions\DetachBulkAction::make(),
             ]);
     }
 }
