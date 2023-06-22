@@ -16,33 +16,11 @@ class ProjectsRelationManager extends RelationManager
 
     protected static ?string $recordTitleAttribute = 'name';
 
-    public static function form(Form $form): Form
-    {
-        return $form
-            ->schema([
-                Forms\Components\TextInput::make('name')
-                    ->required()
-                    ->maxLength(255),
-            ]);
-    }
-
     public static function table(Table $table): Table
     {
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('name'),
-            ])
-            ->filters([
-                //
-            ])
-            ->headerActions([
-                //
-            ])
-            ->actions([
-                //
-            ])
-            ->bulkActions([
-                //
             ]);
     }
 }

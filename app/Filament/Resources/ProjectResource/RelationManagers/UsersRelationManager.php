@@ -18,24 +18,12 @@ class UsersRelationManager extends RelationManager
 
     protected static ?string $pluralLabel = 'Teams';
 
-    public static function form(Form $form): Form
-    {
-        return $form
-            ->schema([
-                Forms\Components\TextInput::make('name')
-                    ->required()
-                    ->maxLength(255),
-            ]);
-    }
 
     public static function table(Table $table): Table
     {
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('name'),
-            ])
-            ->filters([
-                //
             ])
             ->headerActions([
                 Tables\Actions\AttachAction::make(),
