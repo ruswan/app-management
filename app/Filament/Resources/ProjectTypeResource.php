@@ -4,6 +4,7 @@ namespace App\Filament\Resources;
 
 use App\Filament\Resources\ProjectTypeResource\Pages;
 use App\Filament\Resources\ProjectTypeResource\RelationManagers;
+use App\Filament\Resources\ProjectTypeResource\RelationManagers\ProjectsRelationManager;
 use App\Models\ProjectType;
 use Filament\Forms;
 use Filament\Forms\Components\Card;
@@ -65,7 +66,7 @@ class ProjectTypeResource extends Resource
     public static function getRelations(): array
     {
         return [
-            //
+            ProjectsRelationManager::class,
         ];
     }
 
