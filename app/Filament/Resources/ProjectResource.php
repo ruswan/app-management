@@ -35,6 +35,9 @@ class ProjectResource extends Resource
                         Forms\Components\TextInput::make('name')
                             ->required()
                             ->maxLength(255),
+                        Forms\Components\TextInput::make('url')
+                                ->required()
+                                ->maxLength(255),
                         Forms\Components\RichEditor::make('description')
                             ->maxLength(65535),
                     ])->columns(1)
@@ -52,6 +55,8 @@ class ProjectResource extends Resource
                             ->searchable()
                             ->label('Production Year')
                             ->required(),
+                        Forms\Components\Toggle::make('is_active')
+                        ->required(),
                     ])->columnSpan(1),
             ])
             ->columns(3);
