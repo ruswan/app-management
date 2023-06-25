@@ -20,6 +20,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @property string $url
  * @property int $production_year
  * @property bool $is_active
+ * @property int $project_type_id
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
  * @property string|null $deleted_at
@@ -39,6 +40,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @method static \Illuminate\Database\Eloquent\Builder|Project whereName($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Project whereProductionYear($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Project whereResponsibleId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Project whereProjctTypeId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Project whereIsActive($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Project whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Project withTrashed()
@@ -63,6 +65,7 @@ class Project extends Model
         'description',
         'production_year_id',
         'is_active',
+        'project_type_id',
     ];
 
     /**
@@ -130,5 +133,15 @@ class Project extends Model
     public function productionYear()
     {
         return $this->belongsTo(ProductionYear::class);
+    }
+
+    /**
+     * Get the projectType that owns the Project
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function projectType()
+    {
+        return $this->belongsTo(ProjectType::class, 'project_type_id');
     }
 }

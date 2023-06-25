@@ -40,4 +40,14 @@ class ProjectType extends Model
 	protected $fillable = [
 		'name'
 	];
+
+    /**
+     * Get all of the projects for the ProjectType
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function projects()
+    {
+        return $this->hasMany(Project::class);
+    }
 }

@@ -10,6 +10,7 @@ use App\Filament\Resources\ProjectResource\RelationManagers\ProjectUsersRelation
 use App\Filament\Resources\ProjectResource\RelationManagers\UsersRelationManager;
 use App\Models\ProductionYear;
 use App\Models\Project;
+use App\Models\ProjectType;
 use App\Models\User;
 use Filament\Forms;
 use Filament\Forms\Components\Card;
@@ -45,6 +46,11 @@ class ProjectResource extends Resource
 
                 Card::make()
                     ->schema([
+                        Forms\Components\Select::make('project_type_id')
+                            ->options(ProjectType::all()->pluck('name', 'id'))
+                            ->searchable()
+                            ->label('Project Type')
+                            ->required(),
                         Forms\Components\Select::make('responsible_id')
                             ->options(User::all()->pluck('name', 'id'))
                             ->searchable()
