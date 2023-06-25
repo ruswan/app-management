@@ -17,7 +17,9 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @property int $id
  * @property int $responsible_id
  * @property string $name
+ * @property string $url
  * @property int $production_year
+ * @property bool $is_active
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
  * @property string|null $deleted_at
@@ -37,6 +39,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @method static \Illuminate\Database\Eloquent\Builder|Project whereName($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Project whereProductionYear($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Project whereResponsibleId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Project whereIsActive($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Project whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Project withTrashed()
  * @method static \Illuminate\Database\Eloquent\Builder|Project withoutTrashed()
@@ -49,14 +52,17 @@ class Project extends Model
 
     protected $casts = [
         'responsible_id' => 'int',
-        'production_year_id' => 'int'
+        'production_year_id' => 'int',
+        'is_active' => 'bool',
     ];
 
     protected $fillable = [
         'responsible_id',
         'name',
+        'url',
         'description',
-        'production_year_id'
+        'production_year_id',
+        'is_active',
     ];
 
     /**
