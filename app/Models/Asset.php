@@ -19,6 +19,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @property int $asset_categori_id
  * @property int $brand_id
  * @property int $condition_id
+ * @property int|null $asset_type_id
  * @property int|null $department_id
  * @property string|null $sn_number
  * @property string|null $mac_address
@@ -56,6 +57,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @method static \Illuminate\Database\Eloquent\Builder|Asset whereMacAddress($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Asset whereName($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Asset whereOwnerId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Asset whereAssetTypeId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Asset wherePurchaseYear($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Asset whereSnNumber($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Asset whereUpdatedAt($value)
