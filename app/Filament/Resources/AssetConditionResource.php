@@ -19,7 +19,7 @@ class AssetConditionResource extends Resource
 {
     protected static ?string $model = AssetCondition::class;
 
-    protected static ?string $navigationGroup = "Data Master";
+    protected static ?string $navigationGroup = "Asset";
 
     protected static ?string $navigationIcon = 'heroicon-o-shield-check';
 
