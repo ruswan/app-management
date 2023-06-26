@@ -53,6 +53,7 @@ class AssetResource extends Resource
                             ->label(__('Brand'))
                             ->options(Brand::all()
                                 ->pluck('name', 'id'))
+                            ->searchable()
                             ->required(),
                         Forms\Components\Select::make('condition_id')
                             ->label(__('Condition'))
