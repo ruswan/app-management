@@ -4,6 +4,7 @@ namespace App\Filament\Resources;
 
 use App\Filament\Resources\AssetConditionResource\Pages;
 use App\Filament\Resources\AssetConditionResource\RelationManagers;
+use App\Filament\Resources\AssetConditionResource\RelationManagers\AssetsRelationManager;
 use App\Models\AssetCondition;
 use Filament\Forms;
 use Filament\Forms\Components\Card;
@@ -66,7 +67,7 @@ class AssetConditionResource extends Resource
     public static function getRelations(): array
     {
         return [
-            //
+            AssetsRelationManager::class,
         ];
     }
 

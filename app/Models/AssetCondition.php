@@ -34,10 +34,20 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  */
 class AssetCondition extends Model
 {
-	use SoftDeletes;
-	protected $table = 'asset_conditions';
+    use SoftDeletes;
+    protected $table = 'asset_conditions';
 
-	protected $fillable = [
-		'name'
-	];
+    protected $fillable = [
+        'name'
+    ];
+
+    /**
+     * Get all of the assets for the AssetCondition
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function assets()
+    {
+        return $this->hasMany(Asset::class, 'condition_id');
+    }
 }
