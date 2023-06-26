@@ -19,7 +19,7 @@ class AssetCategoryResource extends Resource
 {
     protected static ?string $model = AssetCategory::class;
 
-    protected static ?string $navigationGroup = "Data Master";
+    protected static ?string $navigationGroup = "Asset";
 
     protected static ?string $navigationIcon = 'heroicon-o-folder';
 
