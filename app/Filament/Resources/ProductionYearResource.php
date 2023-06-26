@@ -19,6 +19,8 @@ class ProductionYearResource extends Resource
 {
     protected static ?string $model = ProductionYear::class;
 
+    protected static ?string $navigationGroup = "Data Master";
+
     protected static ?string $navigationIcon = 'heroicon-o-calendar';
 
     protected static ?int $navigationSort = 10;
