@@ -36,11 +36,11 @@ class ProjectResource extends Resource
                         Forms\Components\TextInput::make('name')
                             ->required()
                             ->maxLength(255),
-                        Forms\Components\TextInput::make('url')
-                                ->required()
-                                ->maxLength(255),
                         Forms\Components\RichEditor::make('description')
                             ->maxLength(65535),
+                        Forms\Components\TextInput::make('url')
+                            ->required()
+                            ->maxLength(255),
                     ])->columns(1)
                     ->columnSpan(2),
 
@@ -62,7 +62,7 @@ class ProjectResource extends Resource
                             ->label('Production Year')
                             ->required(),
                         Forms\Components\Toggle::make('is_active')
-                        ->required(),
+                            ->required(),
                     ])->columnSpan(1),
             ])
             ->columns(3);
@@ -103,7 +103,8 @@ class ProjectResource extends Resource
                 Tables\Actions\DeleteBulkAction::make(),
                 Tables\Actions\ForceDeleteBulkAction::make(),
                 Tables\Actions\RestoreBulkAction::make(),
-            ]);
+            ])
+            ->defaultSort('id', 'desc');
     }
 
     /**
