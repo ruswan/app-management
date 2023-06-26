@@ -19,7 +19,7 @@ class ProductionYearResource extends Resource
 {
     protected static ?string $model = ProductionYear::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-collection';
+    protected static ?string $navigationIcon = 'heroicon-o-calendar';
 
     protected static ?int $navigationSort = 10;
 
