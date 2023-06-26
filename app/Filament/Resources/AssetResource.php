@@ -98,12 +98,35 @@ class AssetResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('name'),
+                Tables\Columns\TextColumn::make('name')
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('assetCategory.name')
+                    ->sortable(),
+                Tables\Columns\TextColumn::make('brand.name')
+                    ->sortable(),
                 Tables\Columns\TextColumn::make('purchase_year')
-                    ->date(),
+                    ->date()
+                    ->sortable(),
+                Tables\Columns\TextColumn::make('assetCondition.name')
+                    ->sortable(),
             ])
             ->filters([
                 Tables\Filters\TrashedFilter::make(),
+                Tables\Filters\SelectFilter::make('asset_category_id')
+                    ->label(__('Asset Category'))
+                    ->relationship('assetCategory', 'name')
+                    ->searchable()
+                    ->multiple(),
+                Tables\Filters\SelectFilter::make('brand_id')
+                    ->label(__('Brand'))
+                    ->relationship('brand', 'name')
+                    ->searchable()
+                    ->multiple(),
+                Tables\Filters\SelectFilter::make('condition_id')
+                    ->label(__('Condition'))
+                    ->relationship('assetCondition', 'name')
+                    ->searchable()
+                    ->multiple(),
             ])
             ->actions([
                 Tables\Actions\ViewAction::make(),
