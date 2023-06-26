@@ -26,11 +26,11 @@ class ProjectTypeResource extends Resource
         return $form
             ->schema([
                 Card::make()
-                ->schema([
-                    Forms\Components\TextInput::make('name')
-                    ->required()
-                    ->maxLength(255),
-                ])
+                    ->schema([
+                        Forms\Components\TextInput::make('name')
+                            ->required()
+                            ->maxLength(255),
+                    ])
             ]);
     }
 
@@ -39,7 +39,7 @@ class ProjectTypeResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('name')
-                ->searchable(),
+                    ->searchable(),
                 Tables\Columns\TextColumn::make('projects_count')
                     ->counts('projects')
                     ->sortable(),
@@ -55,7 +55,8 @@ class ProjectTypeResource extends Resource
                 Tables\Actions\DeleteBulkAction::make(),
                 Tables\Actions\ForceDeleteBulkAction::make(),
                 Tables\Actions\RestoreBulkAction::make(),
-            ]);
+            ])
+            ->defaultSort('id', 'desc');
     }
 
     /**
@@ -70,7 +71,7 @@ class ProjectTypeResource extends Resource
         ];
     }
 
-     /**
+    /**
      * Mengembalikan array yang berisi daftar halaman (pages) yang terkait.
      *
      * @return array<string, array<mixed>> The array of pages.
