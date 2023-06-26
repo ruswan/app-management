@@ -16,7 +16,7 @@ class UsersRelationManager extends RelationManager
 
     protected static ?string $recordTitleAttribute = 'name';
 
-    protected static ?string $pluralLabel = 'Teams';
+    protected static ?string $pluralLabel = 'Team Members';
 
 
     public static function table(Table $table): Table
