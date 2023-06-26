@@ -91,7 +91,8 @@ class Asset extends Model
         'location',
         'purchase_year',
         'attachment',
-        'owner_id'
+        'owner_id',
+        'asset_type_id',
     ];
 
     /**

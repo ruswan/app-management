@@ -7,6 +7,7 @@ use App\Filament\Resources\AssetResource\RelationManagers;
 use App\Models\Asset;
 use App\Models\AssetCategory;
 use App\Models\AssetCondition;
+use App\Models\AssetType;
 use App\Models\Brand;
 use App\Models\Department;
 use Filament\Forms;
@@ -55,6 +56,11 @@ class AssetResource extends Resource
                                 ->pluck('name', 'id'))
                             ->searchable()
                             ->required(),
+                        Forms\Components\Select::make('asset_type_id')
+                            ->label(__('Type'))
+                            ->options(AssetType::all()
+                                ->pluck('name', 'id'))
+                            ->searchable(),
                         Forms\Components\Select::make('condition_id')
                             ->label(__('Condition'))
                             ->options(AssetCondition::all()
