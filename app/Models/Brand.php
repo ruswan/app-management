@@ -34,10 +34,20 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  */
 class Brand extends Model
 {
-	use SoftDeletes;
-	protected $table = 'brands';
+    use SoftDeletes;
+    protected $table = 'brands';
 
-	protected $fillable = [
-		'name'
-	];
+    protected $fillable = [
+        'name'
+    ];
+
+    /**
+     * Get all of the assets for the Brand
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function assets()
+    {
+        return $this->hasMany(Asset::class, 'asset_type_id');
+    }
 }
