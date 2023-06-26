@@ -4,6 +4,7 @@ namespace App\Filament\Resources;
 
 use App\Filament\Resources\AssetCategoryResource\Pages;
 use App\Filament\Resources\AssetCategoryResource\RelationManagers;
+use App\Filament\Resources\AssetCategoryResource\RelationManagers\AssetsRelationManager;
 use App\Models\AssetCategory;
 use Filament\Forms;
 use Filament\Forms\Components\Card;
@@ -66,7 +67,7 @@ class AssetCategoryResource extends Resource
     public static function getRelations(): array
     {
         return [
-            //
+            AssetsRelationManager::class,
         ];
     }
 

@@ -34,10 +34,20 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  */
 class AssetCategory extends Model
 {
-	use SoftDeletes;
-	protected $table = 'asset_categories';
+    use SoftDeletes;
+    protected $table = 'asset_categories';
 
-	protected $fillable = [
-		'name'
-	];
+    protected $fillable = [
+        'name'
+    ];
+
+    /**
+     * Get all of the assets for the AssetCategory
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function assets()
+    {
+        return $this->hasMany(Asset::class, 'asset_categori_id');
+    }
 }
