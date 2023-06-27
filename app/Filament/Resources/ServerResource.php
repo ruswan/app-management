@@ -19,6 +19,8 @@ class ServerResource extends Resource
 {
     protected static ?string $model = Server::class;
 
+    protected static ?string $navigationGroup = "Data Master";
+
     protected static ?string $navigationIcon = 'heroicon-o-server';
 
     protected static ?int $navigationSort = 5;
@@ -74,7 +76,8 @@ class ServerResource extends Resource
                 Tables\Actions\DeleteBulkAction::make(),
                 Tables\Actions\ForceDeleteBulkAction::make(),
                 Tables\Actions\RestoreBulkAction::make(),
-            ]);
+            ])
+            ->defaultSort('id', 'desc');
     }
 
     /**

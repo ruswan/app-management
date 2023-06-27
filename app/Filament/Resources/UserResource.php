@@ -21,6 +21,8 @@ class UserResource extends Resource
 {
     protected static ?string $model = User::class;
 
+    protected static ?string $navigationGroup = "Data Master";
+
     protected static ?string $navigationIcon = 'heroicon-o-users';
 
     public static function form(Form $form): Form
@@ -76,7 +78,8 @@ class UserResource extends Resource
                 Tables\Actions\DeleteBulkAction::make(),
                 Tables\Actions\ForceDeleteBulkAction::make(),
                 Tables\Actions\RestoreBulkAction::make(),
-            ]);
+            ])
+            ->defaultSort('id', 'desc');
     }
 
     /**

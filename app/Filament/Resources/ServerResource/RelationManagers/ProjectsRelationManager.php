@@ -2,6 +2,7 @@
 
 namespace App\Filament\Resources\ServerResource\RelationManagers;
 
+use App\Models\Project;
 use Filament\Forms;
 use Filament\Resources\Form;
 use Filament\Resources\RelationManagers\RelationManager;
@@ -20,13 +21,32 @@ class ProjectsRelationManager extends RelationManager
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('name'),
+                Tables\Columns\TextColumn::make('name')
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('user.name')
+                    ->label('PIC'),
+                Tables\Columns\TextColumn::make('productionYear.year')
+                    ->sortable(),
+                Tables\Columns\TextColumn::make('departments_count')
+                    ->counts('departments')
+                    ->sortable(),
+                Tables\Columns\TextColumn::make('users_count')
+                    ->counts('users')
+                    ->label('Teams count')
+                    ->sortable(),
+                Tables\Columns\TextColumn::make('modules_count')
+                    ->counts('modules')
+                    ->sortable(),
             ])
             ->headerActions([
                 Tables\Actions\AttachAction::make(),
             ])
             ->actions([
                 Tables\Actions\DetachAction::make(),
+                Tables\Actions\Action::make('view')
+                    ->url(fn (Project $record): string => route('filament.resources.projects.view', $record))
+                    ->icon('heroicon-s-eye')
+                    ->color('secondary'),
             ])
             ->bulkActions([
                 Tables\Actions\DetachBulkAction::make(),

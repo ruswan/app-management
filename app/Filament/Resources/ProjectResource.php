@@ -8,8 +8,11 @@ use App\Filament\Resources\ProjectResource\RelationManagers\DepartmentsRelationM
 use App\Filament\Resources\ProjectResource\RelationManagers\ModulesRelationManager;
 use App\Filament\Resources\ProjectResource\RelationManagers\ProjectUsersRelationManager;
 use App\Filament\Resources\ProjectResource\RelationManagers\UsersRelationManager;
+use AlperenErsoy\FilamentExport\Actions\FilamentExportHeaderAction;
+use AlperenErsoy\FilamentExport\Actions\FilamentExportBulkAction;
 use App\Models\ProductionYear;
 use App\Models\Project;
+use App\Models\ProjectType;
 use App\Models\User;
 use Filament\Forms;
 use Filament\Forms\Components\Card;
@@ -24,6 +27,8 @@ class ProjectResource extends Resource
 {
     protected static ?string $model = Project::class;
 
+    protected static ?string $navigationGroup = "Projects";
+
     protected static ?string $navigationIcon = 'heroicon-o-briefcase';
 
     public static function form(Form $form): Form
@@ -37,11 +42,19 @@ class ProjectResource extends Resource
                             ->maxLength(255),
                         Forms\Components\RichEditor::make('description')
                             ->maxLength(65535),
+                        Forms\Components\TextInput::make('url')
+                            ->required()
+                            ->maxLength(255),
                     ])->columns(1)
                     ->columnSpan(2),
 
                 Card::make()
                     ->schema([
+                        Forms\Components\Select::make('project_type_id')
+                            ->options(ProjectType::all()->pluck('name', 'id'))
+                            ->searchable()
+                            ->label('Project Type')
+                            ->required(),
                         Forms\Components\Select::make('responsible_id')
                             ->options(User::all()->pluck('name', 'id'))
                             ->searchable()
@@ -51,6 +64,8 @@ class ProjectResource extends Resource
                             ->options(ProductionYear::all()->pluck('year', 'id'))
                             ->searchable()
                             ->label('Production Year')
+                            ->required(),
+                        Forms\Components\Toggle::make('is_active')
                             ->required(),
                     ])->columnSpan(1),
             ])
@@ -92,7 +107,12 @@ class ProjectResource extends Resource
                 Tables\Actions\DeleteBulkAction::make(),
                 Tables\Actions\ForceDeleteBulkAction::make(),
                 Tables\Actions\RestoreBulkAction::make(),
-            ]);
+                FilamentExportBulkAction::make('export'),
+            ])
+            ->headerActions([
+                FilamentExportHeaderAction::make('export'),
+            ])
+            ->defaultSort('id', 'desc');
     }
 
     /**

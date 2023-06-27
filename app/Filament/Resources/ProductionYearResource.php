@@ -19,7 +19,9 @@ class ProductionYearResource extends Resource
 {
     protected static ?string $model = ProductionYear::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-collection';
+    protected static ?string $navigationGroup = "Data Master";
+
+    protected static ?string $navigationIcon = 'heroicon-o-calendar';
 
     protected static ?int $navigationSort = 10;
 
@@ -56,7 +58,8 @@ class ProductionYearResource extends Resource
                 Tables\Actions\DeleteBulkAction::make(),
                 Tables\Actions\ForceDeleteBulkAction::make(),
                 Tables\Actions\RestoreBulkAction::make(),
-            ]);
+            ])
+            ->defaultSort('id', 'desc');
     }
 
     /**
