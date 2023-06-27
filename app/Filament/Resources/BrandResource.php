@@ -2,9 +2,9 @@
 
 namespace App\Filament\Resources;
 
-use App\Filament\Resources\AssetCategoryResource\RelationManagers\AssetsRelationManager;
 use App\Filament\Resources\BrandResource\Pages;
 use App\Filament\Resources\BrandResource\RelationManagers;
+use App\Filament\Resources\BrandResource\RelationManagers\AssetsRelationManager;
 use App\Models\Brand;
 use Filament\Forms;
 use Filament\Forms\Components\Card;
