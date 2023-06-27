@@ -4,6 +4,8 @@ namespace App\Filament\Resources;
 
 use App\Filament\Resources\AssetResource\Pages;
 use App\Filament\Resources\AssetResource\RelationManagers;
+use AlperenErsoy\FilamentExport\Actions\FilamentExportHeaderAction;
+use AlperenErsoy\FilamentExport\Actions\FilamentExportBulkAction;
 use App\Models\Asset;
 use App\Models\AssetCategory;
 use App\Models\AssetCondition;
@@ -142,7 +144,12 @@ class AssetResource extends Resource
                 Tables\Actions\DeleteBulkAction::make(),
                 Tables\Actions\ForceDeleteBulkAction::make(),
                 Tables\Actions\RestoreBulkAction::make(),
-            ]);
+                FilamentExportBulkAction::make('export'),
+            ])
+            ->headerActions([
+                FilamentExportHeaderAction::make('export'),
+            ])
+            ->defaultSort('id', 'desc');
     }
 
     /**

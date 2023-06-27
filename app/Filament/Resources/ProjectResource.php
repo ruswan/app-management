@@ -8,6 +8,8 @@ use App\Filament\Resources\ProjectResource\RelationManagers\DepartmentsRelationM
 use App\Filament\Resources\ProjectResource\RelationManagers\ModulesRelationManager;
 use App\Filament\Resources\ProjectResource\RelationManagers\ProjectUsersRelationManager;
 use App\Filament\Resources\ProjectResource\RelationManagers\UsersRelationManager;
+use AlperenErsoy\FilamentExport\Actions\FilamentExportHeaderAction;
+use AlperenErsoy\FilamentExport\Actions\FilamentExportBulkAction;
 use App\Models\ProductionYear;
 use App\Models\Project;
 use App\Models\ProjectType;
@@ -105,6 +107,10 @@ class ProjectResource extends Resource
                 Tables\Actions\DeleteBulkAction::make(),
                 Tables\Actions\ForceDeleteBulkAction::make(),
                 Tables\Actions\RestoreBulkAction::make(),
+                FilamentExportBulkAction::make('export'),
+            ])
+            ->headerActions([
+                FilamentExportHeaderAction::make('export'),
             ])
             ->defaultSort('id', 'desc');
     }
