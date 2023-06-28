@@ -71,3 +71,7 @@ Sebuah **Server** dapat digunakan oleh beberapa **Project**.
 - Jalankan server pengembangan: `php artisan serve`
 
 ---
+
+## Testing
+`php artisan test`
+
